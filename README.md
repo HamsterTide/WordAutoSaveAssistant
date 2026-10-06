@@ -2,7 +2,7 @@
 
 一个轻量级 Windows 桌面应用，用于定时保存当前用户会话中可检测到的 Microsoft Word 文档。当前版本 **v1.4.2（自定义图标与署名版）**，窗口标题包含版本号，避免与旧版混淆。
 
-[下载最新版 v1.4.2](https://github.com/HamsterTide/WordAutoSaveAssistant/releases/tag/v1.4.2)。普通用户请下载 `Word定时保存助手-v1.4.2-win-x64.zip`，解压后运行 `Word定时保存助手.exe`；源码压缩包供开发者使用。发布页同时提供 SHA-256 校验清单。便携包内附使用说明、当前验收报告、优化状态与程序校验值。
+[下载最新版 v1.4.2](https://github.com/HamsterTide/WordAutoSaveAssistant/releases/tag/v1.4.2)。普通用户请下载 `WordAutoSaveAssistant-v1.4.2-win-x64.zip`，解压后运行 `Word定时保存助手.exe`；`WordAutoSaveAssistant-v1.4.2-source.zip` 为开发者源码包。发布页提供 `SHA256SUMS.txt` 校验清单。GitHub 附件使用英文文件名，内容与本地中文命名的压缩包相同；便携包内附使用说明、当前验收报告、优化状态与程序校验值。
 
 <img src="src/WordAutoSaveAssistant/Assets/AppIcon.png" alt="Word 定时保存助手图标" width="128">
 

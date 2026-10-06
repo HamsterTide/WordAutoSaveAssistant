@@ -6,7 +6,7 @@
 
 ## 下载与使用
 
-1. 下载 `Word定时保存助手-v1.4.2-win-x64.zip` 并解压。
+1. 下载 `WordAutoSaveAssistant-v1.4.2-win-x64.zip` 并解压。
 2. 安装 .NET 8 Desktop Runtime（x64），并确保已安装 Microsoft Word 桌面版。
 3. 运行 `Word定时保存助手.exe`，选择间隔（1–1440 分钟，默认 10 分钟），点击“开始”。每次启动均保持停止状态。
 4. “立即保存一次”可单独执行一轮；“停止”取消后续任务和等待，不关闭 Word。
@@ -33,4 +33,4 @@
 
 54/54 回归测试通过，构建无警告、无错误，并检查了本版真实界面。v1.4.2 没有重新运行真实 Word 集成验收；完整证据见仓库 `QA_REPORT-v1.4.2.md`。
 
-`Word定时保存助手-v1.4.2-source.zip` 为源码包。`SHA256SUMS-v1.4.2.txt` 给出两个 ZIP 与便携程序的 SHA-256；下载后可使用 PowerShell `Get-FileHash -Algorithm SHA256` 核对。GitHub 自动生成的 Source code (zip/tar.gz) 与手工附加的源码包是不同压缩文件，不适用该 ZIP 校验值。
+`WordAutoSaveAssistant-v1.4.2-source.zip` 为源码包。`SHA256SUMS.txt` 给出两个 ZIP 与便携程序的 SHA-256；下载后可使用 PowerShell `Get-FileHash -Algorithm SHA256` 核对。GitHub 附件使用英文文件名，内容与本地中文命名的压缩包相同。GitHub 自动生成的 Source code (zip/tar.gz) 与手工附加的源码包是不同压缩文件，不适用该 ZIP 校验值。
