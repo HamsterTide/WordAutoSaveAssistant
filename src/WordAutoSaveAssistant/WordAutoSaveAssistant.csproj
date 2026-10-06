@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Platforms>x64</Platforms>
+    <PlatformTarget>x64</PlatformTarget>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>false</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <NuGetAudit>false</NuGetAudit>
+    <IncludeNativeLibrariesForSelfExtract>false</IncludeNativeLibrariesForSelfExtract>
+    <AssemblyName>Word定时保存助手</AssemblyName>
+    <RootNamespace>WordAutoSaveAssistant</RootNamespace>
+    <Version>1.4.2</Version>
+    <Authors>LGH</Authors>
+    <Company>LGH</Company>
+    <ApplicationIcon>Assets/AppIcon.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <DebugType Condition="'$(Configuration)' == 'Release'">none</DebugType>
+    <DebugSymbols Condition="'$(Configuration)' == 'Release'">false</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="WordAutoSaveAssistant.Tests" />
+    <Resource Include="Assets/AppIcon.png" />
+    <EmbeddedResource Include="Assets/AppIcon.ico" LogicalName="WordAutoSaveAssistant.Assets.AppIcon.ico" />
+    <AssemblyMetadata Include="Author" Value="LGH" />
+    <AssemblyMetadata Include="Sponsor" Value="ZHZ" />
+  </ItemGroup>
+</Project>
