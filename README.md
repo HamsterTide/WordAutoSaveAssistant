@@ -1,14 +1,13 @@
 # Word 定时保存助手
 
-一个轻量级 Windows 桌面应用，用于定时保存当前用户会话中可检测到的 Microsoft Word 文档。当前版本 **v1.4.2（自定义图标与署名版）**，窗口标题包含版本号，避免与旧版混淆。
+一个轻量级 Windows 桌面应用，用于定时保存当前用户会话中可检测到的 Microsoft Word 文档。当前版本 **v1.4.2**。
 
 [下载最新版 v1.4.2](https://github.com/HamsterTide/WordAutoSaveAssistant/releases/tag/v1.4.2)。普通用户请下载 `WordAutoSaveAssistant-v1.4.2-win-x64.zip`，解压后运行 `Word定时保存助手.exe`；`WordAutoSaveAssistant-v1.4.2-source.zip` 为开发者源码包。发布页提供 `SHA256SUMS.txt` 校验清单。GitHub 附件使用英文文件名，内容与本地中文命名的压缩包相同；便携包内附使用说明、当前验收报告、优化状态与程序校验值。
 
 <img src="src/WordAutoSaveAssistant/Assets/AppIcon.png" alt="Word 定时保存助手图标" width="128">
 
-作者：**LGH**；赞助商：**ZHZ**。署名固定显示于界面底部，同时写入程序集元数据；Windows 文件属性的公司字段为 LGH。图标采用用户提供的图片，移除外部网格背景并保留灰蓝色圆角主体；程序文件、窗口、界面标题和托盘使用同一套图标。PNG 和八尺寸 ICO 均嵌入程序，无需外置图片。v1.4.2 未改动保存、检测、定时和权限逻辑。
+作者：**LGH**；赞助商：**ZHZ**。
 
-v1.4.1 仅实施已确认的优化 1、2、3：设置目录或文件无法写入时，本次运行仍使用所选间隔，并显示非阻断警告；文档清单区分符合保存条件、有修改、跳过、文档异常和无法连接；连接提示区分已确认权限差异、忙碌、拒绝访问及对象模型不可用。保存调度仍每 250 毫秒检查，但倒计时只在显示秒变化时更新；停止时不反复完整刷新，托盘隐藏时不刷新控件，恢复后立即同步最新状态。状态画刷冻结并复用。
 
 ## 使用方法
 
@@ -60,38 +59,4 @@ v1.4.1 仅实施已确认的优化 1、2、3：设置目录或文件无法写入
 
 设置写入失败时只影响下次启动能否记住新间隔，不影响本次调度；下次启动可能恢复此前已保存的间隔或默认 10 分钟，不会恢复运行状态。之后成功写入会清除设置警告。
 
-## 从源码构建
 
-需要 .NET 8 SDK：
-
-```powershell
-dotnet build .\WordAutoSaveAssistant.sln -c Debug -p:Platform=x64 -m:1
-dotnet .\tests\WordAutoSaveAssistant.Tests\bin\x64\Debug\net8.0-windows\WordAutoSaveAssistant.Tests.dll
-dotnet publish .\src\WordAutoSaveAssistant\WordAutoSaveAssistant.csproj -c Release -r win-x64 --self-contained false -p:PublishSingleFile=true -p:Platform=x64 -o .\发布版-v1.4.2
-```
-
-只读检查当前可发现的 Word 实例和文档名（不会调用 `Save`）：
-
-```powershell
-dotnet .\tests\WordAutoSaveAssistant.Tests\bin\x64\Debug\net8.0-windows\WordAutoSaveAssistant.Tests.dll --word-discovery --inventory
-```
-
-附加的隔离 Word 集成测试必须显式启用：
-
-```powershell
-dotnet .\tests\WordAutoSaveAssistant.Tests\bin\x64\Debug\net8.0-windows\WordAutoSaveAssistant.Tests.dll --word-integration
-# 附加真实一分钟 DispatcherTimer + COM STA 保存 + DOCX 磁盘内容验证
-dotnet .\tests\WordAutoSaveAssistant.Tests\bin\x64\Debug\net8.0-windows\WordAutoSaveAssistant.Tests.dll --word-integration --timed
-```
-
-测试只会在确认自动化创建了唯一的新 `WINWORD.EXE` 进程后操作临时文档；否则会安全跳过。
-
-Debug 构建还支持 `--ui-fixture` 界面验收参数。该模式只显示假数据，并禁用“开始”、“立即保存一次”、间隔输入和刷新，绝不会连接 Word；Release 构建不包含此入口。
-
-独立 Debug 界面性能诊断使用相同假数据，预热 3 秒后采样 30 秒，并正常退出，不连接 Word：
-
-```powershell
-dotnet .\tests\WordAutoSaveAssistant.Tests\bin\x64\Debug\net8.0-windows\WordAutoSaveAssistant.Tests.dll --ui-refresh-benchmark
-```
-
-当前验收报告为 [QA_REPORT-v1.4.2.md](QA_REPORT-v1.4.2.md)。发布包保留了打包时的使用说明；本仓库 README 另增加了 GitHub 下载入口。
